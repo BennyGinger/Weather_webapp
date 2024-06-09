@@ -23,7 +23,8 @@ fig.add_trace(go.Scatter(x=data[data['country'] != country][x_axis],
                          y=data[data['country'] != country][y_axis], 
                          mode='markers', 
                          marker_color='blue',
-                         hovertemplate = f"<b>Country</b>: {data['country']}<br><b>{x_axis}</b>: %{x_axis}<br><b>{y_axis}</b>: %{y_axis}<extra></extra>"))
+                         hovertemplate = "<b>Country</b>: %{text}<br><b>"+x_axis+"</b>: %{x}<br><b>"+y_axis+"</b>: %{y}<extra></extra>",
+                         text = data[data['country'] != country]['country'].tolist()))
 
 # Add scatter plot for selected country
 if country != "None":
@@ -31,7 +32,8 @@ if country != "None":
                              y=data[data['country'] == country][y_axis], 
                              mode='markers', 
                              marker_color='red',
-                             hovertemplate = f"<b>Country</b>: {country}<br><b>{x_axis}</b>: %{x_axis}<br><b>{y_axis}</b>: %{y_axis}<extra></extra>"))
+                             hovertemplate = "<b>Country</b>: %{text}<br><b>"+x_axis+"</b>: %{x}<br><b>"+y_axis+"</b>: %{y}<extra></extra>",
+                             text = data[data['country'] == country]['country'].tolist()))
 
 fig.update_layout(xaxis_title=x_axis, yaxis_title=y_axis,showlegend=False)
 
